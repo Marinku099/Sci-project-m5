@@ -2,9 +2,8 @@ import io, sys
 from fpdf import FPDF
 from PyPDF2 import PdfReader, PdfWriter, PdfMerger
 
-IN_FILEPATH = open("D:\\coding\\pdfedit\\แบบสำรวจเพื่อการวิจัยในโครงงาน30.11.pdf","rb") 
-OUT_FILEPATH = 'D:\\coding\\pdfedit\\output.pdf'
-ON_PAGE_INDEX = 0  # Index of the target page (starts at zero)
+IN_FILEPATH = open("mypdf.pdf","rb") 
+OUT_FILEPATH = 'output.pdf'
 
 def new_content(cnt):
     row = 1
@@ -28,7 +27,7 @@ def new_content(cnt):
         pdf.ellipse(116 + (i*(size+offsetX)), 197 + ((cnt//10**(2 - i))*(size + offsetY)), size, size, 'FD')
         cnt %= 10**(2 - i)
     
-    pdf_content = pdf.output('temp.pdf')
+    pdf_content = pdf.output('temp1.pdf')
 
 def buildPage(cnt):
     reader = PdfReader(IN_FILEPATH)
@@ -36,7 +35,7 @@ def buildPage(cnt):
     print(cnt)
 
     for i in range(2):
-        page_overlay = PdfReader('temp.pdf').pages[i]
+        page_overlay = PdfReader('temp1.pdf').pages[i]
         reader.pages[i].merge_page(page_overlay)
 
     writer =  PdfWriter()
