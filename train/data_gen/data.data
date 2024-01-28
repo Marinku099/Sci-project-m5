@@ -1,0 +1,7 @@
+classes=2
+train   = data_gen/train.list
+valid   = data_gen/test.list
+labels  = data_gen/labels.txt
+names   = data_gen/names.list
+backup  = data_gen/backup
+top=1
